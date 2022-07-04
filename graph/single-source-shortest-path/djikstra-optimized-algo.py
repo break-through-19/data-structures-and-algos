@@ -2,9 +2,9 @@
 * Used for both directed and undirected graph
 * Slightly modified version of Prim spanning tree (though that is applicable only for undirected)
 
-Time Complexity: O ( V^2 )
+Time Complexity: O ( E log V )
 """
-
+import heapdict
 import sys
 
 
@@ -15,42 +15,39 @@ class Solution:
     def dijkstra(self, V, adj, S):
         # code here
 
-        # Almost same as Prim's MST algo
         # Result array
         vertexToMinDistance = [sys.maxsize] * V
-        vertexToMinDistance[S] = 0
 
         visited = [False] * V
 
-        for vertex in range(V - 1):
-            min_vertex = self.get_unvisited_min_distance_vertex(vertexToMinDistance, visited, V)
-            min_dist = vertexToMinDistance[min_vertex]
+        vertexToDistancePriorityQ = heapdict.heapdict()
+        for v in range(V):
+            vertexToDistancePriorityQ[v] = sys.maxsize
+
+        vertexToDistancePriorityQ[S] = 0
+
+        # Todo Time complexity O( V )
+        for vertex in range(V-1):
+            # Todo Time complexity O( log V )
+            min_vertex, min_dist = vertexToDistancePriorityQ.popitem()
 
             # Mark visited and add to the result
+            vertexToMinDistance[min_vertex] = min_dist
             visited[min_vertex] = True
 
+            # Todo Total time complexity O( E log V )
             for dest, wgt in adj[min_vertex]:
-                # Todo: Only difference between Minimum Spanning and Dijkstra
-                # Todo: (min_dist + wgt)
+                # Todo : Only difference between Minimum Spanning and Dijkstra
+                # Todo : (min_dist + wgt)
                 if not visited[dest] and (min_dist + wgt) < vertexToMinDistance[dest]:
                     vertexToMinDistance[dest] = min_dist + wgt
 
+        # Todo Total Time complexity --> max[ (V log V), (E log V) ]
+
         return vertexToMinDistance
 
-    def get_unvisited_min_distance_vertex(self, vertexToMinDistance, visited, V):
 
-        min_dist = sys.maxsize
-        min_vertex = 0
-
-        for v in range(V):
-            if not visited[v] and vertexToMinDistance[v] < min_dist:
-                min_dist = vertexToMinDistance[v]
-                min_vertex = v
-
-        return min_vertex
-    # {
-
-
+# {
 #  Driver Code Starts
 # Initial Template for Python 3
 import atexit
@@ -60,13 +57,13 @@ import sys
 if __name__ == '__main__':
     test_cases = int(input())
     for cases in range(test_cases):
-        V, E = map(int, input().strip().split())
+        V, E = 2, 1
         adj = [[] for i in range(V)]
         for i in range(E):
-            u, v, w = map(int, input().strip().split())
+            u, v, w = 0, 1, 9
             adj[u].append([v, w])
             adj[v].append([u, w])
-        S = int(input())
+        S = 0
         ob = Solution()
 
         res = ob.dijkstra(V, adj, S)

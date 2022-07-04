@@ -1,4 +1,7 @@
 """
+Criteria
+* For connected and undirected graph
+
 Time complexity - O ( E log E )
 Algorithm Steps:
 1. Sort all the edges in non-decreasing order of their weight.

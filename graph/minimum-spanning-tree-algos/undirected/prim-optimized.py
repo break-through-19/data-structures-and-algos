@@ -1,5 +1,8 @@
 """
-Time Complexity - O ( V log V )
+Criteria
+* For connected and undirected graph
+
+Time Complexity - O ( E log V )
 
 Algorithm
 1) Create a set mstSet that keeps track of vertices already included in MST.
@@ -38,7 +41,7 @@ class Solution:
             vertex_to_min_weight[i] = sys.maxsize
 
         # Todo Time - O( V )
-        for vertex in range(V):
+        for vertex in range(V-1): #Imp V-1
             # 3 a) Pick a vertex u which is not there in mstSet and has a minimum key value.
             # Pops out as key, priority
             # Todo Time - O( log V )
@@ -50,12 +53,15 @@ class Solution:
             # c) Update key value of all adjacent vertices of u. To update the key values, iterate through all adjacent vertices.
             # For every adjacent vertex v, if the weight of edge u-v is less than the previous key value of v,
             # update the key value as the weight of u-v
+            # Todo Total Time O( E log V )
             for v, w in adj[min_vertex]:
                 if not visited[v] and vertex_to_min_weight[v] < w:
                     # Todo Time - O( log V )
                     vertex_to_min_weight[v] = w
                     # Update result
                     mst_edges_child_to_parent[v] = min_vertex
+
+            # Todo Total Time complexity --> max[ (V log V), (E log V) ]
 
             mst_weight = sum(vertex_to_min_weight)
 

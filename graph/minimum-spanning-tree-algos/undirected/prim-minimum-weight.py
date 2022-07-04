@@ -1,4 +1,7 @@
 """
+Criteria
+* For connected and undirected graph
+
 Time Complexity - O ( V^2 )
 
 Algorithm
@@ -31,7 +34,7 @@ class Solution:
         vertex_to_min_weight = []
         vertex_to_min_weight[0] = 0
 
-        for vertex in range(V):
+        for vertex in range(V-1):
             # 3 a) Pick a vertex u which is not there in mstSet and has a minimum key value.
             min_vertex = self.unvisited_min_vertex(vertex_to_min_weight, visited)
 

@@ -2,7 +2,7 @@
 * Used for both directed and undirected graph
 * Slightly modified version of Prim spanning tree (though that is applicable only for undirected)
 
-Time Complexity: O ( E log V )
+Time Complexity: O ( (V+E) log V )
 """
 import heapdict
 import sys
@@ -42,7 +42,7 @@ class Solution:
                 if not visited[dest] and (min_dist + wgt) < vertexToMinDistance[dest]:
                     vertexToMinDistance[dest] = min_dist + wgt
 
-        # Todo Total Time complexity --> max[ (V log V), (E log V) ]
+        # Todo Total Time complexity --> max[ (V log V) + (E log V) ]
 
         return vertexToMinDistance
 

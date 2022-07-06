@@ -2,7 +2,9 @@
 Criteria
 * For connected and undirected graph
 
-Time Complexity - O ( E log V )
+Time Complexity - O ( (V+E) log V )
+
+Min Heap Implementation: https://ide.geeksforgeeks.org/ziRyEgablT
 
 Algorithm
 1) Create a set mstSet that keeps track of vertices already included in MST.
@@ -61,7 +63,7 @@ class Solution:
                     # Update result
                     mst_edges_child_to_parent[v] = min_vertex
 
-            # Todo Total Time complexity --> max[ (V log V), (E log V) ]
+            # Todo Total Time complexity --> max[ (V log V) + (E log V) ]
 
             mst_weight = sum(vertex_to_min_weight)
 

@@ -3,6 +3,8 @@
 * Works for directed and undirected graphs with positive edges only
 * Negative weight graph is not suitable
 
+Time complexity: O(V^3)
+
 ALGORITHM GIST
 We initialize the solution matrix same as the input graph matrix as a first step. Then we update the solution matrix by
 considering all vertices as an intermediate vertex. The idea is to one by one pick all vertices and updates all shortest paths

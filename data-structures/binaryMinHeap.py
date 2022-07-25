@@ -20,6 +20,9 @@ from typing import List
 
 class MinHeap:
     #------------------------HEAP OPERATIONS-------------------------------
+    # Time complexity - O(N)
+    # Source - https://www.geeksforgeeks.org/time-complexity-of-building-a-heap/
+    # Only when heap is built by adding elements one by one Time complexity is O( N log N )
     @classmethod
     def heapify(cls, list: List[int]):
         listSize = len(list)
@@ -27,11 +30,13 @@ class MinHeap:
         for pos in reversed(range(listSize // 2)): #Todo: Dont forget
             cls._siftDownByIndex(list, pos)
 
+    # Time complexity - O(log N)
     @classmethod
     def heapPush(cls, minHeap: List[int], data: int):
         minHeap.append(data)
         cls._siftUpByIndex(minHeap, len(minHeap)-1)
 
+    # Time complexity - O(log N)
     @classmethod
     def heapPop(cls, minHeap: List[int]) -> int:
         heapSize = len(minHeap)
@@ -46,6 +51,7 @@ class MinHeap:
                 minHeap.pop(0)
             return poppedElement
 
+    # Time complexity - O(1)
     @classmethod
     def heapPeek(cls, minHeap: List[int]) -> int:
         if len(minHeap) > 0:

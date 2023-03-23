@@ -14,6 +14,7 @@ class Solution:
             if visitorTrack[v] == True:
                 return
 
+            # Marked as visited at the beginning
             visitorTrack[v] = True
 
             for vertex in adj[v]:
@@ -31,6 +32,7 @@ class Solution:
             [y1, y2, y3, x]
             Reverse of this gives topological order
             """
+            # But collected as Rev Topo Sort at the end
             reverseTopoSort.append(v)
 
         for vertex in range(V):

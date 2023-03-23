@@ -1,5 +1,5 @@
 """
-* Used for both directed and undirected graph
+* Used for both Positive Edged directed and undirected graph
 * Slightly modified version of Prim spanning tree (though that is applicable only for undirected)
 
 Time Complexity: O ( V^2 )

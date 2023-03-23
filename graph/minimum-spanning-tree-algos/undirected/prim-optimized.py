@@ -3,6 +3,7 @@ Criteria
 * For connected and undirected graph
 
 Time Complexity - O ( (V+E) log V )
+Space Complexity - O ( V )
 
 Min Heap Implementation: https://ide.geeksforgeeks.org/ziRyEgablT
 
@@ -20,6 +21,8 @@ as the weight of u-v
 """
 import sys
 import heapdict
+# Heapdict is nothing but Priority Queue
+# heapdict - is diff module. Requires pip install
 
 class Solution:
     def prim_mst(self, V, adj):
@@ -31,16 +34,14 @@ class Solution:
         # 1) Create a set mstSet that keeps track of vertices already included in MST.
         visited = [False] * V
 
+        # Todo Time - O( V )
         # 2) Assign a key value to all vertices in the input graph. Initialize all key values as INFINITE.
-        vertex_to_min_weight = heapdict.heapdict()
-
+        vertex_to_min_weight = [sys.maxsize] * V
         # Assign the key value as 0 for the first vertex so that it is picked first.
         # Priority Queue to reduce min search time
         vertex_to_min_weight[0] = 0
-
-        # Todo Time - O( log V )
-        for i in range(1, V):
-            vertex_to_min_weight[i] = sys.maxsize
+        # enumerate 's return type is class enumerate
+        vertex_to_min_weight = heapdict.heapdict(enumerate(vertex_to_min_weight))
 
         # Todo Time - O( V )
         for vertex in range(V-1): #Imp V-1
@@ -55,10 +56,11 @@ class Solution:
             # c) Update key value of all adjacent vertices of u. To update the key values, iterate through all adjacent vertices.
             # For every adjacent vertex v, if the weight of edge u-v is less than the previous key value of v,
             # update the key value as the weight of u-v
-            # Todo Total Time O( E log V )
+            # Todo For V-1 iterations --> TOTAL Time  O( E log V )
             for v, w in adj[min_vertex]:
-                if not visited[v] and vertex_to_min_weight[v] < w:
+                if not visited[v] and vertex_to_min_weight[v] > w:
                     # Todo Time - O( log V )
+                    # Key - which is 'v' here can hold more meta-data if required for any other scenario
                     vertex_to_min_weight[v] = w
                     # Update result
                     mst_edges_child_to_parent[v] = min_vertex
@@ -66,4 +68,5 @@ class Solution:
             # Todo Total Time complexity --> max[ (V log V) + (E log V) ]
 
             mst_weight = sum(vertex_to_min_weight)
+            return mst_weight
 

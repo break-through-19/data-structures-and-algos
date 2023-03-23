@@ -36,8 +36,7 @@ class SegmentTree():
             self._build_segment_tree(list_left, mid, left_child_pos)
             self._build_segment_tree(mid + 1, list_right, right_child_pos)
 
-            self.segmentTree[node_position] = self.operation_func(self.segmentTree[left_child_pos], self.segmentTree[
-                right_child_pos])
+            self.segmentTree[node_position] = self.operation_func(self.segmentTree[left_child_pos], self.segmentTree[right_child_pos])
 
     # Time complexity O(log N)
     def update_segment_tree(self, list_position, new_value):

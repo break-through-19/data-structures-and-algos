@@ -9,6 +9,8 @@ class Solution:
     def dfsOfGraph(self, V, adj):
         # code here
         dfsPath = []
+        # Bool array works for numeric vertices only
+        # Using set() can be extensible and handle any kind of vertex representation
         visited = [False] * V
 
         # Handle disconnected components of graph

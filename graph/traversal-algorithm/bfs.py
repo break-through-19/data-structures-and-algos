@@ -1,33 +1,36 @@
 """
 Time complexity: O( |E| + |V| )
-Space complexity: O( |V| ) -> For visted array and queue
+Space complexity: O( |V| ) -> For visited array and queue
 """
+from collections import deque
 
 class Solution:
 
     # Function to return Breadth First Traversal of given graph.
     def bfsOfGraph(self, V, adj):
         # code here
+        # Bool array works for numeric vertices only
+        # Using set() can be extensible and handle any kind of vertex representation
         markVisited = [False] * V
         bfs = []
 
-        def buildBfs(queue, markVisited):
+        def buildBfs(vertex, markVisited):
+            # Initialize queue with v as that will be the start point
+            queue = deque([vertex])
             bfs = []
-            while len(queue) != 0:
-                currentNode = queue.pop(0)
+            while queue:
+                currentNode = queue.popleft()
                 if not markVisited[currentNode]:
                     markVisited[currentNode] = True
                     bfs.append(currentNode)
-                    queue = queue + (adj[currentNode])
-
+                    # Extend Function
+                    queue.extend(adj[currentNode])
             return bfs
 
         # Handle disconnected components of graph
         for v in range(V):
             if not markVisited[v]:
-                # Initialize queue with v as that will be the start point
-                queue = [v]
-                bfs = bfs + buildBfs(queue, markVisited)
+                bfs = bfs + buildBfs(v, markVisited)
 
         return bfs
 

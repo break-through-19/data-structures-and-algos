@@ -1,25 +1,32 @@
 """
+Bellman Ford Algo
 * Works for both negative and positive weights unlike Dijkstra
+* Works only for DIRECTED graphs
 * Time complexity more than Dijkstra O ( VE )
 * Suitable for distributed systems
 * Will not work for Negative cycles, for the same reason not suitable for UNDIRECTED graphs (as undirected negative edges would be considered a cycle)
 
 Negative Cycle Definition:
+Theoretically, if a graph has cycle and sum of its edges is negative, it is called negative cycle.
+
 Has Neg Cycle,
 If dist[v] > dist[u] + weight[u][v]
 
 Time complexity: O ( VE )
+
+Below solution is combination of two problems:
+1. Bellman Ford algo for single source shortest path
+2. Find if a graph has negative cycle
 """
 
 # User function Template for python3
 import sys
 
-
 class Solution:
     def isNegativeWeightCycle(self, n, edges):
         # Code here
 
-        def bellman_for_algo(source, min_dist):
+        def bellman_ford_algo(source, min_dist):
             # Bellman Ford Algorithm - to find single source based shortest path
             # Works for directed graphs without negative cycles
             min_dist[source] = 0
@@ -41,6 +48,7 @@ class Solution:
 
             # Extension of that to find the negative cycle
             for u, v, w in edges:
+                # If you encounter a scenario like this even after N-1 iterations - then Negative cycle exists
                 if min_dist[v] > min_dist[u] + w:
                     return 1
             return 0
@@ -48,10 +56,9 @@ class Solution:
         min_dist = [sys.maxsize] * n
 
         # To handle DISCONNECTED components also
-        for v in range(n - 1):
-            if min_dist[v] == sys.maxsize:
-                if bellman_for_algo(v, min_dist):
-                    return 1
+        for v in range(n):
+            if min_dist[v] == sys.maxsize and bellman_ford_algo(v, min_dist):
+                return 1
 
         return 0
 

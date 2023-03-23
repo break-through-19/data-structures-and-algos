@@ -1,5 +1,5 @@
 """
-* Used for both directed and undirected graph
+* Used for both Positive Edged directed and undirected graph
 * Slightly modified version of Prim spanning tree (though that is applicable only for undirected)
 
 Time Complexity: O ( (V+E) log V )
@@ -17,14 +17,11 @@ class Solution:
 
         # Result array
         vertexToMinDistance = [sys.maxsize] * V
-
+        vertexToMinDistance[S] = 0
         visited = [False] * V
 
-        vertexToDistancePriorityQ = heapdict.heapdict()
-        for v in range(V):
-            vertexToDistancePriorityQ[v] = sys.maxsize
-
-        vertexToDistancePriorityQ[S] = 0
+        # Todo Time complexity O( V )
+        vertexToDistancePriorityQ = heapdict.heapdict(enumerate(vertexToMinDistance))
 
         # Todo Time complexity O( V )
         for vertex in range(V-1):

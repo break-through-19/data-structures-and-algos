@@ -18,9 +18,9 @@ dist[i][k] + dist[k][j] if dist[i][j] > dist[i][k] + dist[k][j]
 
 Q: So, what’s the catch?
 A: The order of the loops.
-for i = 0 to n – 1             for i = 0 to n – 1
-    for k = 0 to n – 1             for j = 0 to n – 1
-        for j = 0 to n – 1             for k = 0 to n – 1
+for src = 0 to n – 1             for src = 0 to n – 1
+    for k = 0 to n – 1             for dest = 0 to n – 1
+        for dest = 0 to n – 1             for k = 0 to n – 1
 None of the above works, because the iterator k responsible for intermediate nodes must always be in the outermost loop.
 """
 
@@ -41,10 +41,10 @@ class Solution:
                 for dest in range(V):
                     # As INFINITE is defined as -1 in the input matrix
                     if matrix[src][k] != -1 and matrix[k][dest] != -1:
-                        if matrix[src][dest] != -1:
-                            matrix[src][dest] = min(matrix[src][dest], matrix[src][k] + matrix[k][dest])
-                        else:
+                        if matrix[src][dest] == -1:
                             matrix[src][dest] = matrix[src][k] + matrix[k][dest]
+                        else:
+                            matrix[src][dest] = min(matrix[src][dest], matrix[src][k] + matrix[k][dest])
 
 
 # {

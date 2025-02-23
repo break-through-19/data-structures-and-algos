@@ -1,7 +1,7 @@
 """
 
-* Works for directed and undirected graphs with positive edges only
-* Negative weight graph is not suitable
+* Works for directed and undirected graphs with positive/negative edges
+* Negative weight cycle graph is not suitable
 
 Time complexity: O(V^3)
 

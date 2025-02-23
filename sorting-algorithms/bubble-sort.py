@@ -26,8 +26,6 @@ class Solution:
             # the below range you are iterating through is already sorted, then there wouldn't be any swaps
             # Hence you break out of the loop
             swapFlag = False
-
-
             for currItr in range(0, n - listItr - 1):
                 # Keep swapping to push the max element to last possible position
                 if arr[currItr] > arr[currItr + 1]:

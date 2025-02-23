@@ -11,6 +11,7 @@ class Node:
 
 
 class Solution:
+    # TC: O(log N)
     def insertToAVL(self, root, key):
         # add key to AVL (if it is not present already)
         # return root node

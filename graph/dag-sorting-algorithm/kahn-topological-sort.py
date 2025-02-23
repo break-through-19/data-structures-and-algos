@@ -24,7 +24,7 @@ class Solution:
 
         indegree = [0] * V
         topoPath = []
-        visitorTrack = [False] * V
+        # visitorTrack = [False] * V
         queue = deque()
 
         # Todo Time Complexity O( E )
@@ -41,18 +41,21 @@ class Solution:
         while queue:
             currentVertex = queue.popleft()
             topoPath.append(currentVertex)
-            visitorTrack[currentVertex] = True
+            # visitorTrack[currentVertex] = True
 
             for vertexV in adj[currentVertex]:
                 indegree[vertexV] -= 1
-                if indegree[vertexV] == 0 and not visitorTrack[vertexV]:
+                # Todo - VisitorTracking is not required because, if a node is visited again its indegree drops to -1
+                # Todo - and below check will not include it anyways
+                if indegree[vertexV] == 0:
+                    # and not visitorTrack[vertexV]:
                     queue.append(vertexV)
 
         return topoPath
 
 
 
-#  Driver Code Starts
+# Driver Code Starts
 # Driver Program
 
 import sys

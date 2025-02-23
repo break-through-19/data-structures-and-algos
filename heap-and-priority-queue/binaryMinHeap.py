@@ -4,8 +4,7 @@ Operations
 1. Insert
 2. Delete top / Extract min
 4. Peek
-5. Pop
-6. Heapify
+5. Heapify
 
 Utils
 1. Sift Up by index / Heapify Up

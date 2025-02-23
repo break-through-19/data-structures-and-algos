@@ -8,14 +8,17 @@ Pre-requisite
 Build -> Time complexity = O(N)
 For N node 2N - 1 nodes will be present in Segment Tree
 
+Space Complexity - O(N)
+
 Operations
-1. Query for a given range
-2. Update for a given leaf node
+1. Query for a given range - O( log N )
+2. Update for a given leaf node - O( log N )
 """
 
 
 class RangeSumSegmentTree:
 
+    # Space complexity - O(N)
     def __init__(self, numericList):
         self.actualList = numericList
         self.sumSegmentTree = [0] * (2 * len(numericList) - 1)
@@ -34,8 +37,7 @@ class RangeSumSegmentTree:
             self._build_segment_tree(list_left, mid, left_child_pos)
             self._build_segment_tree(mid + 1, list_right, right_child_pos)
 
-            self.sumSegmentTree[node_position] = self.sumSegmentTree[left_child_pos] + self.sumSegmentTree[
-                right_child_pos]
+            self.sumSegmentTree[node_position] = self.sumSegmentTree[left_child_pos] + self.sumSegmentTree[right_child_pos]
 
     # Time complexity O(log N)
     def update_segment_tree(self, list_position, new_value):
@@ -54,8 +56,7 @@ class RangeSumSegmentTree:
                 else:
                     _update_segment_tree(mid + 1, list_right, right_child_pos)
 
-                self.sumSegmentTree[node_position] = self.sumSegmentTree[left_child_pos] + self.sumSegmentTree[
-                    right_child_pos]
+                self.sumSegmentTree[node_position] = self.sumSegmentTree[left_child_pos] + self.sumSegmentTree[right_child_pos]
 
         _update_segment_tree(0, len(self.actualList) - 1)
 

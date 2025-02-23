@@ -27,14 +27,13 @@ class Solution:
             return False
 
         visited[V] = True
-        result = False
         pathStack[V] = True
         for vertex in adj[V]:
-            result = self.checkIfCyclic(vertex, adj, visited, pathStack)
-            if result:
+            if self.checkIfCyclic(vertex, adj, visited, pathStack):
                 return True
         pathStack[V] = False
-        return result
+
+        return False
 
 
 # {

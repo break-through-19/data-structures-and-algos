@@ -48,7 +48,7 @@ class Solution:
                 edge_count += 1
                 # Todo Time - O(log V) --> since its using ranking and path compression
                 # Todo Otherwise O(V). Also its in terms of V and not E - coz there can be only V-1 edges
-                self.union(u, v, parent_u, parent_v, parent, rank)
+                self.union(parent_u, parent_v, parent, rank)
         # Todo Time of loop - O ( E log V )
 
 

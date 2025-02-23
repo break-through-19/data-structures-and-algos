@@ -5,8 +5,7 @@ Operations
 2. Delete
 3. Modify priority by a Key
 4. Peek
-5. Pop
-6. Heapify
+5. Heapify
 
 Utils
 1. Sift Up by index
@@ -81,8 +80,6 @@ class MinPriorityQueue:
             cls._siftUpByIndex(minHeap, pos)
         else:
             cls._siftDownByIndex(minHeap, pos)
-
-
 
     # ------------------------HEAP UTIL FUNCTIONS-------------------------------
     @classmethod

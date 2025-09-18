@@ -1,4 +1,5 @@
 from collections import deque
+# Eulerian Circuit - A path in which all edges are visited and the path starts and ends at the same node.
 
 class Solution:
     # Reference: https://www.youtube.com/watch?v=8MpoO2zA2l4
@@ -43,9 +44,7 @@ class Solution:
         startNode = 0
 
         for i in range(V):
-            if degree[i] % 2 == 1: return i
-
-            if degree[i] > 0: startNode = i
+            if degree[i] > 0: return i
 
         return startNode
 

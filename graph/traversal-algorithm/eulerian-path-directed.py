@@ -1,4 +1,5 @@
 from collections import deque
+# Eulerian Path - A path in which all edges are visited.
 
 class Solution:
     # Reference: https://www.youtube.com/watch?v=8MpoO2zA2l4

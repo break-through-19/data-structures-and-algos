@@ -1,5 +1,7 @@
 # Heirholzer Algorithm
 # Reconstruct Itinerary - Leet Code
+# This is not the complete algorithm, few steps are skipped as those conditions are met by the problem statement
+# For complete algo, refer to: eulerian-path-directed
 import bisect
 
 

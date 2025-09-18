@@ -1,4 +1,5 @@
 from collections import deque
+# Eulerian Path - A path in which all edges are visited.
 
 class Solution:
     # Reference: https://www.youtube.com/watch?v=8MpoO2zA2l4
@@ -9,7 +10,7 @@ class Solution:
         degree = [0] * V
 
         # Step 1 - Count degree
-        E = self.countEdgesInOutDegree(adj_list, V, degree)
+        E = self.countEdgesWithDegree(adj_list, V, degree)
 
         # Step 2 - Verify if the Eulerian Path exist
         if not self.hasEulerianPath(V, degree): return []

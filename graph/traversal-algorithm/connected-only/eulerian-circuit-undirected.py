@@ -55,7 +55,7 @@ class Solution:
         # Instead we track visited edges, since the objective is to visit all the edges
         while degree[vertex]:
             degree[vertex] -= 1
-            self.eulerianDfs(adj_list[degree[vertex]], degree, adj_list, eulerian_circuit)
+            self.eulerianDfs(adj_list[vertex][degree[vertex]], degree, adj_list, eulerian_circuit)
 
         eulerian_circuit.appendleft(vertex)
 

@@ -40,9 +40,9 @@ class Solution:
         for v in range(V):
             if degree[v] % 2 == 1:
                 oddDegreeVertex += 1
-            if oddDegreeVertex >= 2: return False
+            if oddDegreeVertex > 2: return False
 
-        return True
+        return oddDegreeVertex == 2 or oddDegreeVertex == 0
 
     def findStartNode(self, V, degree):
         startNode = 0
@@ -61,7 +61,7 @@ class Solution:
         # Instead we track visited edges, since the objective is to visit all the edges
         while degree[vertex]:
             degree[vertex] -= 1
-            self.eulerianDfs(adj_list[degree[vertex]], degree, adj_list, eulerian_path)
+            self.eulerianDfs(adj_list[vertex][degree[vertex]], degree, adj_list, eulerian_path)
 
         eulerian_path.appendleft(vertex)
 

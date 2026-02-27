@@ -8,43 +8,33 @@ Worst - O(n log n)
 Space complexity - O( n )
 """
 
-import math
-
 class Solution:
-    def merge(self, arr, l, mid, r):
-        # code here
-        leftArr = []
-        rightArr = []
-        leftLen = mid - l
-        rightLen = r + 1 - mid
-        for leftItr in range(l, mid):
-            leftArr.append(arr[leftItr])
+    def merge(self, nums, left, mid, right):
+        # Merge two sorted halves nums[left:mid] and nums[mid:right+1] into nums
+        left_half = nums[left:mid]
+        right_half = nums[mid:right + 1]
 
-        for rightItr in range(mid, r + 1):
-            rightArr.append(arr[rightItr])
+        left_idx = right_idx = 0
+        curr_idx = left
 
-        currArrItr = l
-        leftItr = 0
-        rightItr = 0
-
-        while leftItr < leftLen and rightItr < rightLen:
-            if leftArr[leftItr] < rightArr[rightItr]:
-                arr[currArrItr] = leftArr[leftItr]
-                leftItr += 1
+        while left_idx < len(left_half) and right_idx < len(right_half):
+            if left_half[left_idx] <= right_half[right_idx]:
+                nums[curr_idx] = left_half[left_idx]
+                left_idx += 1
             else:
-                arr[currArrItr] = rightArr[rightItr]
-                rightItr += 1
-            currArrItr += 1
+                nums[curr_idx] = right_half[right_idx]
+                right_idx += 1
+            curr_idx += 1
 
-        while leftItr < leftLen:
-            arr[currArrItr] = leftArr[leftItr]
-            leftItr += 1
-            currArrItr += 1
+        while left_idx < len(left_half):
+            nums[curr_idx] = left_half[left_idx]
+            left_idx += 1
+            curr_idx += 1
 
-        while rightItr < rightLen:
-            arr[currArrItr] = rightArr[rightItr]
-            rightItr += 1
-            currArrItr += 1
+        while right_idx < len(right_half):
+            nums[curr_idx] = right_half[right_idx]
+            right_idx += 1
+            curr_idx += 1
 
     def mergeSort(self, arr, l, r):
         # code here

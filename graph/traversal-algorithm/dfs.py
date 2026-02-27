@@ -11,7 +11,7 @@ class Solution:
         dfsPath = []
         # Bool array works for numeric vertices only
         # Using set() can be extensible and handle any kind of vertex representation
-        visited = [False] * V
+        visited = set()
 
         # Handle disconnected components of graph
         for vertex in range(V):
@@ -20,10 +20,10 @@ class Solution:
         return dfsPath
 
     def buildDfs(self, visited, V, adj, dfsPath):
-        if visited[V] == True:
+        if V in visited:
             return
 
-        visited[V] = True
+        visited.add(V)
         dfsPath.append(V)
 
         for vertex in adj[V]:

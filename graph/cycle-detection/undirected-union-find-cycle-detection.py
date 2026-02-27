@@ -1,6 +1,6 @@
 """
 Time complexity: O( |E| log V ), however log V is close to constant bcoz of optimizations
-Space complexity: O( |V| ) -> For visited and path stack array
+Space complexity: O( |V| ) -> For parent, rank and edge set array
 """
 
 

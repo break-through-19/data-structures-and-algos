@@ -7,31 +7,30 @@ class Solution:
     # Function to detect cycle in a directed graph.
     def isCyclic(self, V, adj):
         # code here
-        visited = [False] * V
-        pathStack = [False] * V
+        visited = set([])
 
         # Goes by the logic that, in a traversing DFS path / recursive tree
         # if a vertex occurs twice there is a cycle
         for vertex in range(V):
-            if not visited[vertex] and self.checkIfCyclic(vertex, adj, visited, pathStack):
+            if vertex not in visited and self.checkIfCyclic(vertex, adj, visited, set([])):
                 return True
 
         return False
 
     def checkIfCyclic(self, V, adj, visited, pathStack):
-        if pathStack[V] == True:
+        if V in pathStack:
             return True
 
         # Imp condition to avoid duplicate visits
-        if visited[V] == True:
+        if V in visited:
             return False
 
-        visited[V] = True
-        pathStack[V] = True
+        visited.add(V)
+        pathStack.add(V)
         for vertex in adj[V]:
             if self.checkIfCyclic(vertex, adj, visited, pathStack):
                 return True
-        pathStack[V] = False
+        pathStack.remove(V)
 
         return False
 

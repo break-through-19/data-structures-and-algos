@@ -10,7 +10,7 @@ Negative Cycle Definition:
 Theoretically, if a graph has cycle and sum of its edges is negative, it is called negative cycle.
 
 Has Neg Cycle,
-If dist[v] > dist[u] + weight[u][v]
+If after V-1 iterations, dist[v] > dist[u] + weight[u][v]
 
 Time complexity: O ( VE )
 

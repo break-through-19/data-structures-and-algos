@@ -52,7 +52,7 @@ class Solution:
         # Todo Time of loop - O ( E log V )
 
 
-        return mst_edges
+        return mst_edges if len(mst_edges) == V-1 else []
 
     # Assign parent by performing UNION with least rank parent
     def union(self, parent_u, parent_v, parent, rank):

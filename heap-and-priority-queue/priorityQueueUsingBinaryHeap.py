@@ -17,6 +17,9 @@ Utils
 Structure
 key, priority
 
+Python:
+from queue import PriorityQueue
+
 """
 import sys
 from typing import List

@@ -23,6 +23,4 @@ class Solution:
             # Swaps if curr_idx doesn't have min element
             if min_idx != curr_idx:
                 # Swapping without using temp variable
-                arr[curr_idx] = arr[curr_idx] + arr[min_idx]
-                arr[min_idx] = arr[curr_idx] - arr[min_idx]
-                arr[curr_idx] = arr[curr_idx] - arr[min_idx]
+                arr[curr_idx], arr[min_idx] = arr[min_idx], arr[curr_idx]

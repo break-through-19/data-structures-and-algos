@@ -11,17 +11,21 @@ class Solution:
         # code here
         # Bool array works for numeric vertices only
         # Using set() can be extensible and handle any kind of vertex representation
-        markVisited = [False] * V
+        
+        # Definition of visited - When a vertex is added to the bfs path, it is considered as visited
+        global markVisited
+        markVisited = set()
         bfs = []
 
-        def buildBfs(vertex, markVisited):
+        def buildBfs(vertex):
             # Initialize queue with v as that will be the start point
+            global markVisited
             queue = deque([vertex])
             bfs = []
             while queue:
                 currentNode = queue.popleft()
-                if not markVisited[currentNode]:
-                    markVisited[currentNode] = True
+                if currentNode not in markVisited:
+                    markVisited.add(currentNode)
                     bfs.append(currentNode)
                     # Extend Function
                     queue.extend(adj[currentNode])
@@ -29,8 +33,8 @@ class Solution:
 
         # Handle disconnected components of graph
         for v in range(V):
-            if not markVisited[v]:
-                bfs = bfs + buildBfs(v, markVisited)
+            if v not in markVisited:
+                bfs.extend(buildBfs(v))
 
         return bfs
 

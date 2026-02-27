@@ -1,10 +1,13 @@
 from collections import deque
-
-
-class Solution:
+"""
     # Source: https://www.geeksforgeeks.org/bipartite-graph/
+    # Theory: https://www.scaler.in/what-is-bipartite-graph/#:~:text=A%20bipartite%20graph%20(also%20referred,have%20an%20edge%20between%20them.
     # Time complexity - O(V+E)
     # Space complexity - O(V)
+"""
+
+class Solution:
+
     def isBipartite(self, adj_list: List[List[int]]) -> bool:
         V = len(adj_list)
         # Colour Map - Takes 0 & 1 as valid colours
@@ -20,6 +23,7 @@ class Solution:
     def bfsBipartiteUtil(self, src, adj_list, vertex_colours):
 
         queue = deque([src])
+        # Used to track visited vertices as well
         vertex_colours[src] = 1
 
         while queue:

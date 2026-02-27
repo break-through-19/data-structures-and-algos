@@ -21,8 +21,10 @@ class Solution:
                 buildRevTopoSort(vertex, visitorTrack, reverseTopoSort)
 
             """
-            Topological Sorting or Kahn's algorithm is an algorithm that orders a directed acylic graph in a way such that 
+            Topological Sorting or Kahn's algorithm is an algorithm that orders a directed acyclic graph in a way such that 
             each node appears before all the nodes it points to.
+            In other words, for a given acyclic graph consider the nodes as tasks. Topological sort basically gives a
+            sequence of execution such that for any task Ti, all the dependant tasks are completed before completing Ti 
                 y1              
               /
             x -- y2

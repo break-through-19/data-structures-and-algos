@@ -16,8 +16,6 @@ from collections import deque
 class Solution:
 
     # Function to return list containing vertices in Topological order.
-
-    # Function to return list containing vertices in Topological order.
     def topoSort(self, V, adj):
         # Code here
         # Kahn's Topological Sort Algorithm

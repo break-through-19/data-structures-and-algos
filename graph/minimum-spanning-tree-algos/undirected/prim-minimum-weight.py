@@ -41,7 +41,8 @@ class Solution:
         vertex_to_min_weight[0] = 0
 
         # Todo O(V-1)
-        for vertex in range(V-1):
+        # Notice how the iteration is range(V-1) and not range(V)
+        for _ in range(V-1):
             # 3 a) Pick a vertex u which is not there in mstSet and has a minimum key value.
             # Todo O(V)
             min_vertex = self.unvisited_min_vertex(vertex_to_min_weight, included_in_mst)
